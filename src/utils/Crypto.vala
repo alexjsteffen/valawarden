@@ -114,10 +114,13 @@ namespace App.Utils {
         }
 
         public static uint8[] add_terminating_zero (uint8[] buffer) {
-            buffer.resize (buffer.length + 1);
-            buffer[buffer.length - 1] = 0;
+            var terminated = new uint8[buffer.length + 1];
+            for (var i = 0; i < buffer.length; i++) {
+                terminated[i] = buffer[i];
+            }
+            terminated[terminated.length - 1] = 0;
 
-            return buffer;
+            return terminated;
         }
 
         public static string md5_string (string str) {
